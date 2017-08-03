@@ -6,4 +6,6 @@ if [ ! -z "$FTP_VIRT_USER" -a ! -z "$FTP_VIRT_PASS" ]; then
     /virtual-user -d "$FTP_VIRT_USER" "$FTP_VIRT_PASS"
 fi
 
+echo "Starting vsftpd..."
+
 exec "$@"
