@@ -1,8 +1,16 @@
-FROM debian:jessie
+FROM debian:bullseye
 MAINTAINER Georg Ledermann <georg@ledermann.dev>
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends vsftpd db5.3-util \
+    && apt-get upgrade -y \
+    && apt-get dist-upgrade -y \
+    && apt-get install -y --no-install-recommends \
+      apt-utils \
+      vsftpd \
+      db5.3-util \
+      procps \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -20,6 +28,8 @@ COPY scripts/* /
 VOLUME ["/var/ftp"]
 EXPOSE 21 20
 EXPOSE 12020 12021 12022 12023 12024 12025
+
+ENV DEBIAN_FRONTEND teletype
 
 ENTRYPOINT ["/init"]
 CMD ["vsftpd"]
