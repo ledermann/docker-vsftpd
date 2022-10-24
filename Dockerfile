@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER Helder Correia <me@heldercorreia.com>
+MAINTAINER Georg Ledermann <georg@ledermann.dev>
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends vsftpd db5.3-util \
