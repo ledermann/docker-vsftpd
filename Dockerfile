@@ -1,5 +1,5 @@
 FROM debian:bullseye
-MAINTAINER Georg Ledermann <georg@ledermann.dev>
+LABEL maintainer="Georg Ledermann <georg@ledermann.dev>"
 
 ENV DEBIAN_FRONTEND noninteractive
 
