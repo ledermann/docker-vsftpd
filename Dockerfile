@@ -4,22 +4,22 @@ LABEL maintainer="Georg Ledermann <georg@ledermann.dev>"
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get dist-upgrade -y \
-    && apt-get install -y --no-install-recommends \
-      apt-utils \
-      vsftpd \
-      db5.3-util \
-      procps \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+  && apt-get upgrade -y \
+  && apt-get dist-upgrade -y \
+  && apt-get install -y --no-install-recommends \
+  apt-utils \
+  vsftpd \
+  db5.3-util \
+  procps \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /var/run/vsftpd/empty \
- && mkdir -p /etc/vsftpd \
- && mkdir -p /var/www \
- && mkdir -p /var/ftp \
- && chown -R www-data:www-data /var/www \
- && cp /etc/vsftpd.conf /etc/vsftpd.orig
+  && mkdir -p /etc/vsftpd \
+  && mkdir -p /var/www \
+  && mkdir -p /var/ftp \
+  && chown -R www-data:www-data /var/www \
+  && cp /etc/vsftpd.conf /etc/vsftpd.orig
 
 COPY vsftpd.conf /etc/
 COPY vsftpd.virtual /etc/pam.d/
