@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM debian:bookworm
 LABEL maintainer="Georg Ledermann <georg@ledermann.dev>"
 
 ENV DEBIAN_FRONTEND noninteractive
